@@ -54,7 +54,7 @@ public class WorkflowController {
             //read some authToken from the cookie and get Username approving the same
             String approver = Util.getUserNameFromCookie(cookie); // for some authentication and authorization purpose
             workflowService.approval(id, status, approver);
-            dto.setMessage("Successfully Processed the Approval");
+            dto.setMessage("Successfully Processed the Status->"+status);
             return new ResponseEntity<>(dto, HttpStatus.OK);
         } catch (ValidationException ve) {
             //checking all exceptions, can check if some specific one is needed
