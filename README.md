@@ -12,11 +12,11 @@
 - port is 8080 -> `http://localhost:8080`   
 
 
-# API Documentation:
+## API Documentation:
 
-## Workflow mappings:
+### Workflow mappings:
 
-### Create a new Party Request
+#### Create a new Party Request
 ```
 curl --location --request POST 'http://localhost:8080/createParty' \
 --header 'Content-Type: application/json' \
@@ -45,14 +45,14 @@ Status Code : 400
 Duplicate Entity Exists  
 ```
 
-## Party Mappings 
+### Party Mappings 
 
-### Get Party Status List
+#### Get Party Status List
 ```
 GET -> http://localhost:8080/partyStatusList?page=0&size=10
 ```
 
-#### Sample Response
+##### Sample Response
 ```
 // 20201205190230
 // http://localhost:8080/partyStatusList
@@ -152,12 +152,12 @@ GET -> http://localhost:8080/partyStatusList?page=0&size=10
 }
 ```
 
-### Get Party Requested List
+#### Get Party Requested List
 
 ```
 http://localhost:8080/partyList?page=0&size=10
 ```
-#### Sample Response
+##### Sample Response
 ```
 // 20201205190416
 // http://localhost:8080/partyList
