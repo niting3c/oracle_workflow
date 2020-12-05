@@ -1,12 +1,12 @@
-#Oracle Workflow
+# Oracle Workflow
 
-##Setup Guide
+## Setup Guide
 
 - Start Mysql Server
 - Create a database `workflow` -> `create database workflow`
 - check the username and password and update the same in `application-dev.properties` file
 
-##Running the Application : 
+## Running the Application : 
 
 - `gradle bootrun` 
 - port is 8080 -> `http://localhost:8080`   
