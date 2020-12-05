@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Don't forget to set system property
+-DLog4jContextSelector=org.apache.logging.log4j.core.async.AsyncLoggerContextSelector
+     to make all loggers asynchronous. -->
+
+<Configuration status="warn">
+    <Appenders>
+        <!-- Async Loggers will auto-flush in batches, so switch off immediateFlush. -->
+        <RollingRandomAccessFile name="WORFLOW" fileName="logs/workflow.log"
+                                 filePattern="logs/workflow$${date:yyyy-MM}/workflow-%d{MM-dd-yyyy}-%i.log.gz"
+                                 immediateFlush="false" append="true">
+            <PatternLayout>
+                <Pattern>%d %p %c{1.} [%t] %m %ex%n</Pattern>
+            </PatternLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+                <SizeBasedTriggeringPolicy size="25 MB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="100"/>
+        </RollingRandomAccessFile>
+    </Appenders>
+    <!--     <Appenders>
+            <Console name="Console" target="SYSTEM_OUT">
+              <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+            </Console>
+        
+            <File name="workflow" fileName="workflow" immediateFlush="true">
+                <PatternLayout pattern="%d{yyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+            </File>  
+      </Appenders>
+     -->
+    <Loggers>
+        <AsyncLogger name="com.oracle.workflow" level="debug" includeLocation="true" additivity="false">
+            <AppenderRef ref="workflow"/>
+        </AsyncLogger>
+        <Root level="info" includeLocation="false">
+            <AppenderRef ref="workflow"/>
+        </Root>
+    </Loggers>
+</Configuration>
