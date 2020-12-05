@@ -36,9 +36,11 @@ public class WorkflowController {
             //checking all exceptions, can check if some specific one is needed
             LOG.error("Validation Error -> {}", ve.getMessage());
             dto.setMessage(ve.getMessage());
+            dto.setStatusCode(400);
             return new ResponseEntity<>(dto, HttpStatus.BAD_REQUEST);
         } catch (ApplicationException ae) {
             dto.setMessage(ae.getMessage());
+            dto.setStatusCode(501);
             LOG.error("Error Occured while creating an party entry with Error -> {}", ae.getMessage());
             return new ResponseEntity<>(dto, HttpStatus.INTERNAL_SERVER_ERROR);
         }
@@ -46,8 +48,8 @@ public class WorkflowController {
 
     @RequestMapping(value = "/approval", method = RequestMethod.GET)
     public @ResponseBody
-    ResponseEntity<?> approval(@RequestParam String id, @RequestParam String status, @RequestHeader(value = "cookie",required = false) String cookie) {
-        PartyResponseDto dto =new PartyResponseDto();
+    ResponseEntity<?> approval(@RequestParam String id, @RequestParam String status, @RequestHeader(value = "cookie", required = false) String cookie) {
+        PartyResponseDto dto = new PartyResponseDto();
         try {
             //read some authToken from the cookie and get Username approving the same
             String approver = Util.getUserNameFromCookie(cookie); // for some authentication and authorization purpose
@@ -56,10 +58,12 @@ public class WorkflowController {
         } catch (ValidationException ve) {
             //checking all exceptions, can check if some specific one is needed
             dto.setMessage(ve.getMessage());
+            dto.setStatusCode(400);
             LOG.error("Validation Error -> {}", ve.getMessage());
             return new ResponseEntity<>(dto, HttpStatus.BAD_REQUEST);
         } catch (ApplicationException ae) {
             dto.setMessage(ae.getMessage());
+            dto.setStatusCode(501);
             LOG.error("Error Occured while Approving Party Request Error -> {}", ae.getMessage());
             return new ResponseEntity<>(dto, HttpStatus.INTERNAL_SERVER_ERROR);
         }

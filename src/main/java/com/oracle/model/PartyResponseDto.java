@@ -9,6 +9,6 @@ import java.util.Map;
 @Setter
 public class PartyResponseDto {
     private String message;
-    private Map<String,String> links;
-    private int statusCode;
+    private Map<String, String> links;
+    private int statusCode = 200;
 }

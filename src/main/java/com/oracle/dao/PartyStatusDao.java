@@ -14,5 +14,6 @@ import javax.transaction.Transactional;
 @Service
 public interface PartyStatusDao extends PagingAndSortingRepository<PartyStatusEntity, Long> {
     public PartyStatusEntity findOneById(long id);
+
     public Page<PartyStatusEntity> findAll(Pageable pageable);
 }

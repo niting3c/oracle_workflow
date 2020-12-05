@@ -26,8 +26,8 @@ public class EmailServiceImpl implements EmailService {
         try {
             Map<String, String> links = new HashMap<>();
 
-            links.put("APPROVE", envUrl + "/approval?id=" + entity.getId() + "&status="+ Constants.APPROVED);
-            links.put("REJECT", envUrl + "/approval?id=" + entity.getId() + "&status="+Constants.REJECTED);
+            links.put("APPROVE", envUrl + "/approval?id=" + entity.getId() + "&status=" + Constants.APPROVED);
+            links.put("REJECT", envUrl + "/approval?id=" + entity.getId() + "&status=" + Constants.REJECTED);
             EmailBodyRequest req = Util.generateApprovalEmailTemplate(entity, links);
             communicate(req);
             return links;

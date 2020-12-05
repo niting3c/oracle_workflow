@@ -27,6 +27,7 @@ public class PartyController {
             LOG.error("Error Occured while Approving Party Request Error -> {}", ae.getMessage());
             PartyResponseDto dto = new PartyResponseDto();
             dto.setMessage(ae.getMessage());
+            dto.setStatusCode(501);
             return new ResponseEntity<>(dto, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
@@ -41,6 +42,7 @@ public class PartyController {
             LOG.error("Error Occured while Approving Party Request Error -> {}", ae.getMessage());
             PartyResponseDto dto = new PartyResponseDto();
             dto.setMessage(ae.getMessage());
+            dto.setStatusCode(501);
             return new ResponseEntity<>(dto, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }

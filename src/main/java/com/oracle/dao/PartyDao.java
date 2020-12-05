@@ -15,5 +15,6 @@ import javax.transaction.Transactional;
 @Service
 public interface PartyDao extends PagingAndSortingRepository<PartyEntity, String> {
     public PartyEntity findByPartyCompositeId(PartyCompositeId compositeId);
+
     public Page<PartyEntity> findAll(Pageable pageable);
 }
