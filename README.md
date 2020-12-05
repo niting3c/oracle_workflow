@@ -7,7 +7,7 @@
 
 ##Running the Application : 
 
-- gradle bootrun 
+- `gradle bootrun` 
 - port is 8080 -> `http://localhost:8080`   
 
 
