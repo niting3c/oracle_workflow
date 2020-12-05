@@ -2,7 +2,7 @@ CREATE DATABASE IF NOT EXISTS `workflow`;
 USE `workflow`;
 
 -- Create syntax for TABLE 'party'
-CREATE TABLE IF NOT EXISTS `party` (
+CREATE TABLE `party` (
   `userName` varchar(255) NOT NULL DEFAULT '',
   `companyName` varchar(255) NOT NULL DEFAULT '',
   `companyId` int(11) NOT NULL,
@@ -13,10 +13,10 @@ CREATE TABLE IF NOT EXISTS `party` (
   `id` int(100) NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`userName`,`companyName`),
   KEY `id` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 
 -- Create syntax for TABLE 'party_status'
-CREATE TABLE IF NOT EXISTS `party_status` (
+CREATE TABLE `party_status` (
   `userName` varchar(255) NOT NULL DEFAULT '',
   `companyName` varchar(255) NOT NULL DEFAULT '',
   `companyId` int(11) NOT NULL,
@@ -33,4 +33,4 @@ CREATE TABLE IF NOT EXISTS `party_status` (
   PRIMARY KEY (`userName`,`companyName`),
   KEY `id` (`id`),
   CONSTRAINT `fk_party_status` FOREIGN KEY (`userName`, `companyName`) REFERENCES `party` (`userName`, `companyName`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
