@@ -1,8 +1,8 @@
 package com.acko.service;
 
 import com.acko.customException.ApplicationException;
-import com.acko.dao.TeamDao;
 import com.acko.dao.DeveloperDao;
+import com.acko.dao.TeamDao;
 import com.acko.entities.DeveloperCompositeEntity;
 import com.acko.entities.DeveloperEntity;
 import com.acko.entities.TeamEntity;
@@ -41,13 +41,14 @@ public class TeamServiceImpl implements TeamService {
                         entity.setName(dev.getName());
                         compositeEntity.setPhoneNumber(dev.getPhoneNumber());
                         compositeEntity.setTeamId(teamId);
-                        entity.setDeveloperCompositeEntity(compositeEntity);
+                        entity.setKey(compositeEntity);
                         return entity;
                     }).collect(Collectors.toList());
+
             LOG.info("Upserting all Developers");
             developerDao.saveAll(developers);
         } catch (Exception e) {
-            LOG.error("Error creating entries in database->{}",e.getMessage());
+            LOG.error("Error creating entries in database->{}", e.getMessage());
             throw new ApplicationException(e.getLocalizedMessage());
         }
     }

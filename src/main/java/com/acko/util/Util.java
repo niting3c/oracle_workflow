@@ -2,18 +2,10 @@ package com.acko.util;
 
 import com.acko.customException.ApplicationException;
 import com.acko.entities.DeveloperEntity;
-import com.acko.model.CreateTeamRequest;
-import com.acko.model.NotificationRequest;
-import com.acko.service.NotificationService;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
-import io.micrometer.core.instrument.config.validate.ValidationException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import sun.net.www.http.HttpClient;
-
-import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -25,14 +17,10 @@ import java.util.Scanner;
 public class Util {
     private static final Logger LOG = LoggerFactory.getLogger(Util.class.getCanonicalName());
 
-
-    public static Pageable getPageableObject(String page, String size) {
-        return PageRequest.of(Integer.parseInt(page), Integer.parseInt(size));
-    }
-
     public static String MakeHttpPostCall(String notifyUrl,DeveloperEntity developer)throws ApplicationException {
-        try {
-            URL url = new URL(notifyUrl);
+       // try {
+            return "Skipping send";
+          /*  URL url = new URL(notifyUrl);
             LOG.info("Creating POST Rest call to ->{}", url.toString());
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setDoOutput(true);
@@ -51,7 +39,7 @@ public class Util {
         } catch (IOException e) {
             LOG.error("unable to communicate to server");
             throw new ApplicationException("Failed to communicate to Server->"+e.getMessage());
-        }
+        }*/
     }
 
     private static String readStream(InputStream stream){

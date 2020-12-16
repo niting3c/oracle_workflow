@@ -13,7 +13,6 @@ import java.io.Serializable;
 @AllArgsConstructor
 @Embeddable
 public class DeveloperCompositeEntity implements Serializable {
-
     @Column(name = "team_id")
     private String teamId;
     @Column(name = "phone_number")

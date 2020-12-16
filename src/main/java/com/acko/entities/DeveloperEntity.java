@@ -15,10 +15,8 @@ import java.io.Serializable;
 @EqualsAndHashCode
 public class DeveloperEntity implements Serializable {
     @EmbeddedId
-    private DeveloperCompositeEntity developerCompositeEntity;
+    private DeveloperCompositeEntity key;
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-
     private String name;
-
 }

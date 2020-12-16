@@ -15,8 +15,9 @@ import java.util.Date;
 @ToString
 @EqualsAndHashCode
 public class TeamEntity implements Serializable {
-    @EmbeddedId
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+
+    @Id
     private String name;
 }
